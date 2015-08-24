@@ -37,7 +37,7 @@ public class Methods extends Object {
 		 ************************************************/
 
 		// You are free to modify the return statement
-		return false;
+		return !original;
 	}
 
 	/*
@@ -60,6 +60,11 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
+            
+            for(int i = 0; i < numbers.length; i++){
+                numbers[i] = numbers[i]*-1;
+            }
+            
 	}
 
 
@@ -90,9 +95,13 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
+                
+                boolean[] list = new boolean[someNumbers.length];  
+                for(int i = 0; i < someNumbers.length; i++){
+                    list[i] = (someNumbers[i] >= floor);
+                }
 		// You are free to modify the return statement
-		return new boolean [0];
+		return list;
 	}
 
 	/*
@@ -117,9 +126,28 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
+                int[] minMaxCouple = new int[2]; //[0] = min & [1] = max
+                    //set bot min and max to first value in someNumbers array
+                minMaxCouple[0] = someNumbers[0];
+                minMaxCouple[1] = someNumbers[0];
+                
+                for(int i = 1; i<someNumbers.length; i++){
+                        //if the min is greater than the current int in the list
+                        //replace the min with the current int in the
+                        //list
+                    if(minMaxCouple[0] > someNumbers[i]){
+                        minMaxCouple[0] = someNumbers[i];
+                    }
+                    
+                        //if the max is less than the current int in the list
+                        //replace the max with the current int in the
+                        //list
+                    if(minMaxCouple[1] < someNumbers[i]){
+                        minMaxCouple[1] = someNumbers[i];
+                    }
+                }
 		// You are free to modify the return statement
-		return new int[2];
+		return minMaxCouple;
 	}
 
 
