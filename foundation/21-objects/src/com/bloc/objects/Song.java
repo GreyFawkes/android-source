@@ -7,7 +7,7 @@ class Song extends Object {
 	String mTitle;
 	// The year it was released
 	int mYearReleased;
-
+        
 	/*
 	 * Song
 	 *
@@ -15,6 +15,17 @@ class Song extends Object {
 	 * Side-effects: Assigns some default ensemble, title and
 	 *				 and year of your choosing
 	 */
+        
+        public Song() {
+            
+            Artist defArtist = new Artist("<not set>", "<not set>");
+            Artist[] defGroup = {defArtist};
+            
+            mEnsemble = new Ensemble(defGroup);
+            mTitle = "<not set>";
+            mYearReleased = 0;
+             
+        }
 	/************************************************
 	 *	ASSIGNMENT:
 	 *	Create the first Song constructor
@@ -28,6 +39,12 @@ class Song extends Object {
 	 * @param ensemble the ensemble responsible (Ensemble)
 	 * @param title the song title (String)
 	 */
+        
+        public Song(Ensemble ensemble, String title){
+            mEnsemble = ensemble;
+            mTitle = title;
+            mYearReleased = 0;
+        }
 	/************************************************
 	 *	ASSIGNMENT:
 	 *	Create the second Song constructor
@@ -40,6 +57,12 @@ class Song extends Object {
 	 * @param title the song title (String)
 	 * @param yearReleased the year the song was released (int)
 	 */
+        
+        public Song(Ensemble ensemble, String title, int yearReleased){
+            mEnsemble = ensemble;
+            mTitle = title;
+            mYearReleased = yearReleased;
+        }
 	/************************************************
 	 *	ASSIGNMENT:
 	 *	Create the third Song constructor
