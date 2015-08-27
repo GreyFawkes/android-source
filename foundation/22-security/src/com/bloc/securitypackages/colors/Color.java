@@ -1,10 +1,10 @@
-package com.bloc.securitypackages;
+package com.bloc.securitypackages.colors;
 
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
 /************************************************/
 
-class Color extends Object {
+public class Color extends Object {
 	// Name of the color
 	String mName;
 	// Alpha value
