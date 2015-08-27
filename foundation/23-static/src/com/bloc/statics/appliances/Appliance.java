@@ -9,7 +9,8 @@ package com.bloc.statics.appliances;
 import com.bloc.statics.PowerSupply;
 
 public abstract class Appliance extends Object {
-	PowerSupply mPowerSupply;
+	
+        public static final PowerSupply sPowerSupply = new PowerSupply();
 
 	String mBrandName;
 	String mSerialNumber;
@@ -51,7 +52,8 @@ public abstract class Appliance extends Object {
 	 * 		   is plugged in
 	 */
 	public boolean isOn() {
-		return mPowerSupply == null ? false : mPowerSupply.hasAppliance(this) && mIsOn;
+		return /* sPowerSupply == null ? false : */
+                        sPowerSupply.hasAppliance(this) && mIsOn;
 	}
 
 	/*
@@ -59,11 +61,11 @@ public abstract class Appliance extends Object {
 	 * Plug the appliance into the power supply
 	 */
 	public void plugIn() {
-		if (mPowerSupply == null) {
-			mPowerSupply = new PowerSupply();
-		}
-		if (!mPowerSupply.hasAppliance(this)) {
-			mPowerSupply.plugAppliance(this);
+//		if (sPowerSupply == null) {
+//			sPowerSupply = new PowerSupply();
+//		}
+		if (!sPowerSupply.hasAppliance(this)) {
+			sPowerSupply.plugAppliance(this);
 		}
 	}
 
@@ -72,9 +74,9 @@ public abstract class Appliance extends Object {
 	 * Remove this appliance from the power supplys
 	 */
 	public void unplug() {
-		if (mPowerSupply == null) {
-			return;
-		}
-		mPowerSupply.unplugAppliance(this);
+//		if (sPowerSupply == null) {
+//			return;
+//		}
+		sPowerSupply.unplugAppliance(this);
 	}
 }
