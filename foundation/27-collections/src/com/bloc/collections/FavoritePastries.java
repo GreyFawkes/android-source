@@ -24,12 +24,27 @@ public class FavoritePastries {
 	 *	Use a HashMap to store the relationship
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
-
-
+    
+        public final int HIGHEST_RATING = 5;
+        public final int LOWEST_RATING = 1;
+    
+        HashMap<Integer, List<Pastry>> map;
+    
 	public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+            
+                //create the HashMap
+            map = new HashMap<>();
+            
+                //assuming that there will only be key values between 1-5
+                //populate the hashmap with keys 1-5 and a respective arraylist
+            
+            for(int i=LOWEST_RATING; i<=HIGHEST_RATING ; i++) {
+                map.put(i, new ArrayList<Pastry>());
+            }
+            
 	}
 
 	/* 
@@ -51,6 +66,30 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+            
+            
+            if(!map.containsKey(rating)) {
+               //do nothing
+            } else {
+                //check if the pastry item exists in the map already
+                for(int i = LOWEST_RATING; i <= HIGHEST_RATING; i++) {
+                    
+                        //if the pastry item is already in the list
+                   if(map.get(i).contains(pastry)) {
+                       // remove the pastry
+                       map.get(i).remove(pastry);
+                       // breakout of for loop
+                       break;
+                   } 
+                      
+                }
+                
+                //add the pastry to the list in the map
+                map.get(rating).add(pastry);
+            }
+            
+            
+            
 	}
 
 	/* 
@@ -69,7 +108,17 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return false;
+            
+                //go through each list in the hash and attempt to 
+                //remove the specific pastry
+                //if the pastry is removed return true else return false
+            for(int i = LOWEST_RATING; i <= HIGHEST_RATING; i++){
+                if(map.get(i).remove(pastry)) {
+                    return true;
+                }
+            }
+               
+            return false;
 	}
 
 	/* 
@@ -90,6 +139,14 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+            
+                for(int i = LOWEST_RATING; i <= HIGHEST_RATING; i++) {
+                    if(map.get(i).contains(pastry)) {
+                        return  i;
+                    }
+                }
+                   
+            
 		return -1;
 	}
 
@@ -113,7 +170,8 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+                     
+		return map.get(rating);
 	}
 
 }
