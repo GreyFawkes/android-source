@@ -20,6 +20,39 @@ public class RecursionUtils extends Object {
 	 	 *	Implement this method, the return value must
 	 	 *	change
 		/************************************************/
-		return 0;
+                      
+                        ///Base case
+                   //if list size is == 2
+                        //return the largest value
+            
+                  if(numbers.size() == 2) {
+                      if(numbers.get(0) <= numbers.get(1)) {
+                          return numbers.get(1);
+                      } else
+                          return numbers.get(0);
+                  }
+                  
+                    //if the size of the list == 1 return that value
+                  if(numbers.size() == 1) {
+                      return numbers.get(0);
+                  }
+                  
+                  if(numbers.isEmpty()){
+                      return 0;
+                  }
+            
+                   // otherwise...
+                    // find the max of a list of...
+                    
+                    List<Integer> list = new ArrayList<>();
+                    
+                    list.add(findMaxRecursively
+                            (numbers.subList(0, numbers.size()/2)));
+                    
+                    list.add(findMaxRecursively
+                            (numbers.subList(numbers.size()/2, numbers.size())));
+                        
+                    return findMaxRecursively(list);
+                 
 	}
 }
